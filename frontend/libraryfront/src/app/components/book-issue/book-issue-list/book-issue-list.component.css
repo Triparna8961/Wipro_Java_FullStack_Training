@@ -1,0 +1,50 @@
+.book-issue-list-container {
+  padding: 20px;
+}
+
+.page-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.filter-container {
+  margin-bottom: 20px;
+}
+
+.loading-spinner {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 200px;
+}
+
+.table-container {
+  overflow-x: auto;
+}
+
+.overdue-row {
+  background-color: #ffebee !important;
+}
+
+.status-issued {
+  color: #2196f3;
+  font-weight: bold;
+}
+
+.status-overdue {
+  color: #f44336;
+  font-weight: bold;
+}
+
+.status-returned {
+  color: #4caf50;
+  font-weight: bold;
+}
+
+.no-data {
+  text-align: center;
+  padding: 20px;
+  color: #666;
+}

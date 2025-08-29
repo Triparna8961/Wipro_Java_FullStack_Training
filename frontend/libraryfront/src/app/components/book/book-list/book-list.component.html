@@ -1,0 +1,63 @@
+<div class="book-list-container">
+  <div class="page-header">
+    <h2>Books Management</h2>
+    <button class="btn btn-primary" (click)="addBook()">Add New Book</button>
+  </div>
+  
+  <div class="search-container">
+    <div class="search-input-group">
+      <select [(ngModel)]="searchType" class="form-control">
+        <option value="title">Search by Title</option>
+        <option value="author">Search by Author</option>
+      </select>
+      <input type="text" [(ngModel)]="searchTerm" (keyup.enter)="searchBooks()" placeholder="Search..." class="form-control" />
+      <button class="btn btn-outline-primary" (click)="searchBooks()">Search</button>
+    </div>
+  </div>
+  
+  <div *ngIf="loading" class="loading-spinner">
+    <div class="spinner-border text-primary" role="status">
+      <span class="sr-only">Loading...</span>
+    </div>
+  </div>
+  
+  <div *ngIf="!loading" class="table-container">
+    <table class="table table-striped">
+      <thead>
+        <tr>
+          <th>ID</th>
+          <th>Title</th>
+          <th>Author</th>
+          <th>ISBN</th>
+          <th>Total Copies</th>
+          <th>Available Copies</th>
+          <th>Status</th>
+          <th>Actions</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let book of filteredBooks">
+          <td>{{ book.id }}</td>
+          <td>{{ book.title }}</td>
+          <td>{{ book.author }}</td>
+          <td>{{ book.isbn }}</td>
+          <td>{{ book.totalCopies }}</td>
+          <td>{{ book.availableCopies }}</td>
+          <td>
+            <span [ngClass]="book.status === 'AVAILABLE' ? 'status-available' : 'status-unavailable'">
+              {{ book.status === 'AVAILABLE' ? 'Available' : 'Unavailable' }}
+            </span>
+          </td>
+          <td>
+            <button class="btn btn-sm btn-info" (click)="editBook(book.id!)">Edit</button>
+            <button class="btn btn-sm btn-danger" (click)="deleteBook(book.id!)">Delete</button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+    
+    <div *ngIf="filteredBooks.length === 0" class="no-data">
+      <p>No books found</p>
+    </div>
+  </div>
+</div>

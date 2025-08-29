@@ -1,0 +1,60 @@
+<div class="book-issue-list-container">
+  <div class="page-header">
+    <h2>Book Issues Management</h2>
+    <button class="btn btn-primary" (click)="addBookIssue()">Issue New Book</button>
+  </div>
+  
+  <div class="filter-container">
+    <div class="form-check">
+      <input type="checkbox" id="overdueOnly" class="form-check-input" [(ngModel)]="showOverdueOnly" (ngModelChange)="toggleOverdueOnly()" />
+      <label class="form-check-label" for="overdueOnly">Show Overdue Books Only</label>
+    </div>
+  </div>
+  
+  <div *ngIf="loading" class="loading-spinner">
+    <div class="spinner-border text-primary" role="status">
+      <span class="sr-only">Loading...</span>
+    </div>
+  </div>
+  
+  <div *ngIf="!loading" class="table-container">
+    <table class="table table-striped">
+      <thead>
+        <tr>
+          <th>ID</th>
+          <th>Book Title</th>
+          <th>Customer Name</th>
+          <th>Issue Date</th>
+          <th>Due Date</th>
+          <th>Return Date</th>
+          <th>Fine</th>
+          <th>Status</th>
+          <th>Actions</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let bookIssue of filteredBookIssues" [ngClass]="{ 'overdue-row': isOverdue(bookIssue) }">
+          <td>{{ bookIssue.id }}</td>
+          <td>{{ bookIssue.book?.title || 'N/A' }}</td>
+          <td>{{ bookIssue.member?.name || 'N/A' }}</td>
+          <td>{{ formatDate(bookIssue.loanDate) }}</td>
+          <td>{{ formatDate(bookIssue.dueDate) }}</td>
+          <td>{{ bookIssue.returnDate ? formatDate(bookIssue.returnDate) : '-' }}</td>
+          <td>-</td>
+          <td>
+            <span [ngClass]="bookIssue.status === 'RETURNED' ? 'status-returned' : (isOverdue(bookIssue) ? 'status-overdue' : 'status-issued')">
+              {{ bookIssue.status === 'RETURNED' ? 'Returned' : (isOverdue(bookIssue) ? 'Overdue' : 'Issued') }}
+            </span>
+          </td>
+          <td>
+            <button *ngIf="bookIssue.status !== 'RETURNED'" class="btn btn-sm btn-success" (click)="returnBook(bookIssue.id!)">Return</button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+    
+    <div *ngIf="filteredBookIssues.length === 0" class="no-data">
+      <p>No book issues found</p>
+    </div>
+  </div>
+</div>

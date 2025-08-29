@@ -1,0 +1,35 @@
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 20px;
+  background-color: #3f51b5;
+  color: white;
+}
+
+.header-title h1 {
+  margin: 0;
+  font-size: 24px;
+}
+
+.header-user {
+  display: flex;
+  align-items: center;
+}
+
+.header-user span {
+  margin-right: 15px;
+}
+
+.logout-btn {
+  background-color: #f44336;
+  color: white;
+  border: none;
+  padding: 5px 10px;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.logout-btn:hover {
+  background-color: #d32f2f;
+}

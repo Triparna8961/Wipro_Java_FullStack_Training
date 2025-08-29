@@ -1,0 +1,76 @@
+# ---- Java / Spring Boot ----
+/target/
+/out/
+/build/
+/bin/
+!.mvn/wrapper/maven-wrapper.jar
+
+# Spring Boot specific
+*.log
+*.tmp
+*.bak
+*.swp
+*.iml
+*.class
+*.war
+*.ear
+*.jar
+
+# ---- Maven ----
+.mvn/wrapper/maven-wrapper.properties
+.mvn/wrapper/maven-wrapper.jar
+.mvn/wrapper/maven-wrapperDownloader.java
+/.mvn/timing.properties
+
+# ---- Gradle ----
+.gradle/
+build/
+!gradle-wrapper.jar
+
+# ---- Angular / Node ----
+node_modules/
+dist/
+.tmp/
+.angular/
+coverage/
+npm-debug.log
+yarn-error.log
+package-lock.json
+pnpm-lock.yaml
+yarn.lock
+
+# ---- Kubernetes / Minikube ----
+# Don’t ignore deployment YAML unless auto-generated
+*.crt
+*.key
+*.pem
+*.kubeconfig
+.secrets/
+# Helm
+charts/**/charts/
+charts/**/tmpcharts/
+charts/**/values.override.yaml
+
+# ---- Docker ----
+*.pid
+*.seed
+*.pid.lock
+.docker/
+.dockerignore
+Dockerfile~
+docker-compose.override.yml
+
+# ---- IDE / Editors ----
+.idea/
+*.iml
+*.ipr
+*.iws
+.vscode/
+*.sw?
+*.swo
+*.DS_Store
+Thumbs.db
+
+# ---- OS files ----
+ehthumbs.db
+Desktop.ini

@@ -1,0 +1,42 @@
+<div class="admin-list-container">
+  <div class="page-header">
+    <h2>Admins Management</h2>
+    <button class="btn btn-primary" (click)="addAdmin()">Add New Admin</button>
+  </div>
+  
+  <div *ngIf="loading" class="loading-spinner">
+    <div class="spinner-border text-primary" role="status">
+      <span class="sr-only">Loading...</span>
+    </div>
+  </div>
+  
+  <div *ngIf="!loading" class="table-container">
+    <table class="table table-striped">
+      <thead>
+        <tr>
+          <th>ID</th>
+          <th>Username</th>
+          <th>Email</th>
+          <th>Role</th>
+          <th>Actions</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let admin of admins">
+          <td>{{ admin.id }}</td>
+          <td>{{ admin.username }}</td>
+          <td>{{ admin.email }}</td>
+          <td>{{ admin.role }}</td>
+          <td>
+            <button class="btn btn-sm btn-info" (click)="editAdmin(admin.id!)">Edit</button>
+            <button class="btn btn-sm btn-danger" (click)="deleteAdmin(admin.id!)">Delete</button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+    
+    <div *ngIf="admins.length === 0" class="no-data">
+      <p>No admins found</p>
+    </div>
+  </div>
+</div>

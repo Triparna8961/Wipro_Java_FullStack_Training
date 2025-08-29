@@ -1,0 +1,24 @@
+.sidebar {
+  width: 250px;
+  background-color: #f8f9fa;
+  height: calc(100vh - 60px);
+  padding-top: 20px;
+}
+
+.sidebar-item {
+  display: flex;
+  align-items: center;
+  padding: 10px 20px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.sidebar-item:hover {
+  background-color: #e9ecef;
+}
+
+.sidebar-item i {
+  margin-right: 10px;
+  width: 20px;
+  text-align: center;
+}
